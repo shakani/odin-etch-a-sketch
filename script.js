@@ -31,7 +31,23 @@ function gridGenerator(nSize) {
 
 function deleteGrid() {
     while (gridContainer.firstChild) {
-        gridContainer.removeChild(firstChild);
+        console.log('Deleting');
+        gridContainer.removeChild(gridContainer.firstChild);
     }
 }
 
+function resizeGrid() {
+    deleteGrid();
+    let nSize = 101;
+    while (nSize > 100) { // get a reasonable grid size
+        nSize = parseInt(prompt('Enter new grid size: '));
+    }
+    gridGenerator(nSize);
+}
+
+// button listeners
+const resizeButton = document.querySelector('#resize');
+resizeButton.addEventListener('click', () => resizeGrid());
+
+// main
+gridGenerator(16);
