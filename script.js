@@ -1,4 +1,6 @@
 const gridContainer = document.querySelector('.grid-container');
+const gridSizeInPixels = 580;
+const nSizeMax = Math.round(Math.sqrt(gridSizeInPixels));
 
 // grid resize
 function gridGenerator(nSize) {
@@ -20,7 +22,7 @@ function gridGenerator(nSize) {
         gridContainer.appendChild(row);
     }
 
-    const gridSizeInPixels = 540;
+    // const gridSizeInPixels = 540;
     const cellSizeInPixels = Math.round(gridSizeInPixels / nSize);
     let cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
@@ -38,8 +40,8 @@ function deleteGrid() {
 
 function resizeGrid() {
     deleteGrid();
-    let nSize = 101;
-    while (nSize > 100) { // get a reasonable grid size
+    let nSize = nSizeMax;
+    while (nSize >= nSizeMax) { // get a reasonable grid size
         nSize = parseInt(prompt('Enter new grid size: '));
     }
     gridGenerator(nSize);
