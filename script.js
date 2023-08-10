@@ -45,9 +45,19 @@ function resizeGrid() {
     gridGenerator(nSize);
 }
 
+function eraseGrid() {
+    let cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+    cell.style.backgroundColor = 'white';
+    });
+}
+
 // button listeners
 const resizeButton = document.querySelector('#resize');
 resizeButton.addEventListener('click', () => resizeGrid());
+
+const eraseButton = document.querySelector('#erase');
+eraseButton.addEventListener('click', () => eraseGrid());
 
 // main
 gridGenerator(16);
